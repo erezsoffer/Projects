@@ -1,0 +1,116 @@
+/** Implements the words methods. */
+class Words {
+    
+    field Array easyWords;
+    field Array medWords;
+    field Array hardWords;
+    field String word; // Holds the current word
+    field int correct; // Counts the number of correct guesses
+
+    /** Constructs a new Words object. */
+    constructor Words new() {
+        let easyWords = Array.new(10);
+        let medWords = Array.new(10);
+        let hardWords = Array.new(10);
+        let correct = 0;
+
+        let easyWords[0] = "CAT";
+        let easyWords[1] = "DOG";
+        let easyWords[2] = "SUN";
+        let easyWords[3] = "FUN";
+        let easyWords[4] = "HAT";
+        let easyWords[5] = "CUP";
+        let easyWords[6] = "BUN";
+        let easyWords[7] = "BOX";
+        let easyWords[8] = "JOY";
+        let easyWords[9] = "TOP";
+
+        let medWords[0] = "LAUGH";
+        let medWords[1] = "SUGAR";
+        let medWords[2] = "APPLE";
+        let medWords[3] = "TABLE";
+        let medWords[4] = "HAPPY";
+        let medWords[5] = "OCEAN";
+        let medWords[6] = "WATER";
+        let medWords[7] = "MUSIC";
+        let medWords[8] = "GREEN";
+        let medWords[9] = "PLANT";
+
+        let hardWords[0] = "QUIXOTE";
+        let hardWords[1] = "SINECUR";
+        let hardWords[2] = "OBSEQUY";
+        let hardWords[3] = "FASTING";
+        let hardWords[4] = "INSOUCI";
+        let hardWords[5] = "PETRICH";
+        let hardWords[6] = "SABRETA";
+        let hardWords[7] = "SOUBRET";
+        let hardWords[8] = "TARADID";
+        let hardWords[9] = "TINTINN";
+
+
+        return this;
+    }
+
+    /** Returns the current correct value. */
+    method int getCorrect() {
+        return correct;
+    }
+    
+    /** Sets the correct field to 0. */
+    method void zeroCorrect() {
+		let correct = 0;
+        return;
+    }
+
+    /** Sets the word field according to the user's input. */
+    method void setWord(char level, int index) {
+        if (level = 69) {
+            let word = easyWords[index];
+        }
+        if (level = 77) {
+            let word = medWords[index];
+        }
+        if (level = 72) {
+            let word = hardWords[index];
+        }
+        return;
+    }
+
+    /** Puts the current letter in the right place. */
+    method boolean putLetter(char letter, int mistakes) {
+        var int i, x;
+        var boolean mistake;
+        let mistake = true;
+        let i = 0;
+        while ((i < word.length()) & (correct < word.length())) {
+            if (letter = word.charAt(i)) {
+                let mistake = false;
+                do Output.moveCursor(7, 8 + (i * 3));
+                do Output.printChar(letter);
+                let correct = correct + 1;
+            }
+            let i = i + 1;
+        }
+        if (mistake) {
+            do Output.moveCursor(17, 6 + (mistakes * 3));
+            if (mistakes > 0) {
+                do Output.printString(", ");
+            }
+            else {
+                do Output.moveCursor(17, 8);
+            }
+            do Output.printChar(letter);
+        }
+        do Output.moveCursor(0, 0);
+        return mistake;
+    }
+
+    /** Disposes this Words. */
+    method void dispose() {
+        do easyWords.dispose();
+        do medWords.dispose();
+        do hardWords.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

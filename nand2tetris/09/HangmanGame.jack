@@ -1,0 +1,134 @@
+/** Implements a hangman game. */
+class HangmanGame {
+    
+    field Hangman hangman; // the hangman of this game
+    field Words words; // the words for this game
+
+    /** Constructs a new Hangman Game. */
+    constructor HangmanGame new() {
+        let hangman = Hangman.new();
+        let words = Words.new();
+        return this;
+    }
+
+    method void run() {
+        var char level, index, letter, again;
+        var String word;
+        var int wordLength, memAddress, mistakes;
+        var boolean mistake, play;
+        let play = true;
+        do Output.moveCursor(10, 20);
+        do Output.printString("Welcome to Hangman game!");
+        do Sys.wait(3000);
+        while (play) {
+            do Screen.clearScreen();
+            do Output.moveCursor(0, 0);
+            do Output.printString("What level would you like to play? E/M/H ");
+            let level = Keyboard.readChar();
+            // Checking the integrity of the input
+            while (~(((level = 69) | (level = 77)) | (level = 72))) {
+                do Output.backSpace();
+                let level = Keyboard.readChar();
+            }
+            do printLevel(level);
+            do Screen.clearScreen();
+            do Output.moveCursor(0, 0);
+            do Output.printString("Choose a number between 0-9.");
+            do Output.println();
+            do Output.println();
+            do Output.printString("If you have already played this level,");
+            do Output.println();
+            do Output.printString("choose a different number than the previous times: ");
+            let index = Keyboard.readChar();
+            // Checking the integrity of the input
+            while ((index > 57) | (index < 48)) {
+                do Output.backSpace();
+                let index = Keyboard.readChar();
+            }
+            do Sys.wait(1000);
+            do words.setWord(level, index - 48);
+            let wordLength = getLength(level);
+            do Screen.clearScreen();
+            do Output.moveCursor(10, 20);
+            do Output.printString("OK, let's start playing!");
+            do Sys.wait(3000);
+            do Screen.clearScreen();
+            do Output.moveCursor(0, 0);
+            do hangman.drawStart();
+            do hangman.drawLines(wordLength);
+            while ((hangman.getMistakes() < 6) & (words.getCorrect() < wordLength)) {
+                let letter = Keyboard.readChar();
+                // Checking the integrity of the input
+                while (~((letter > 64) & (letter < 91))) {
+                    do Output.backSpace();
+                    let letter = Keyboard.readChar();
+                }
+                do Output.backSpace();
+                let mistakes = hangman.getMistakes();
+                let mistake = words.putLetter(letter, mistakes);
+                if (mistake) {
+                    do hangman.addOrgan();
+                }
+                if (words.getCorrect() = wordLength) {
+                    do Output.moveCursor(12, 28);
+                    do Output.printString("You won!");
+                }
+            }
+            do Output.moveCursor(0, 0);
+            do Output.printString("Do you want to play again? Y/N ");
+            let again = Keyboard.readChar();
+            // Checking the integrity of the input
+            while (~((again = 78) | (again = 89))) {
+                do Output.backSpace();
+                let again = Keyboard.readChar();
+            }
+            if (again = 78) {
+                let play = false;
+                do Screen.clearScreen();
+                do Output.moveCursor(10, 20);
+                do Output.printString("Thank you for playing!");
+            }
+            do hangman.zeroMistakes();
+            do words.zeroCorrect();
+        }
+        return;
+    }
+
+    /** Prints the level according to the user's input. */
+    method void printLevel (char level) {
+        if (level = 69) {
+            do Output.printString("asy");
+        }
+        if (level = 77) {
+            do Output.printString("edium");
+        }
+        if (level = 72) {
+            do Output.printString("ard");
+        }
+        do Sys.wait(1000);
+        return;
+    }
+
+    /** Returns the length of the word according to the user's input. */
+    method int getLength(char level) {
+        var int length;
+        if (level = 69) {
+            let length = 3;
+        }
+        if (level = 77) {
+            let length = 5;
+        }
+        if (level = 72) {
+            let length = 7;
+        }
+        return length;
+    }
+
+    /** Disposes this game. */
+    method void dispose() {
+        do hangman.dispose();
+        do words.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

@@ -1,0 +1,19 @@
+## How to compile
+
+$ javac Parser.java
+$ javac CodeWriter.java
+$ javac VMTranslator.java
+
+## How to run
+
+$ java VMTranslator FileName.vm
+
+- The output file would be FileName.asm in the current dir
+
+## Comments
+
+The VMTranslator works temporary only for:
+
+- Push / pop commands
+
+- Arithmetic / Logical commands
