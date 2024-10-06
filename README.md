@@ -1,13 +1,13 @@
 # Projects
 
-This repository contains various projects that demonstrate applications of machine learning, reinforcement learning, image processing, and computer architecture. Below is an overview of each project:
+This repository contains various projects demonstrating machine learning applications, reinforcement learning, image processing, and computer architecture. Below is an overview of each project:
 
 ## Projects Overview
 
 ### 1. Using LLMs for Software Engineering
 
 - **Description**: 
-  An automated workflow that generates, executes, and iteratively refines Python code to query a CSV file based on user input. This project utilizes Azure OpenAI for developing and correcting the code.
+  An automated workflow that generates, executes, and iteratively refines Python code to query a CSV file based on user input. This project utilizes Azure OpenAI to develop and correct the code.
   
 - **Features**:
   - Generates Python code based on user specifications.
@@ -39,7 +39,7 @@ This repository contains various projects that demonstrate applications of machi
   - **Description**: A lane detection system that processes real-world dashcam video footage from a highway, utilizing image processing techniques to identify and mark lane boundaries.
   
 - **Object Detection System**:
-  - **Description**: An object detection system that leverages a preselected classification model as the foundational backbone to identify and classify objects within images.
+  - **Description**: An object detection system to identify and classify objects within images, leveraging a preselected classification model as the foundational backbone.
 
 ---
 
