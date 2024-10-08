@@ -51,7 +51,7 @@ This project implements a lane detection system using computer vision techniques
 ## Example Output
 
 When running the program, you will see the lane lines drawn on the video in red, with lane change notifications (either "Lane Change --->" or "<--- Lane Change") if a lane change is detected.  
-See [Lane Changing](https://www.youtube.com/watch?v=9vDveLTsRgo), [Night Output](https://www.youtube.com/watch?v=V6N4vKbF1Lw)
+See [Lane Changing](https://www.youtube.com/watch?v=9vDveLTsRgo), [Night Output](https://www.youtube.com/watch?v=V6N4vKbF1Lw).
 
 ## Additional Notes
 
