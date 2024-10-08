@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project implements a lane detection system using computer vision techniques, specifically designed to process video frames and identify lane lines. It is capable of detecting lane changes and marking them on the video feed in real-time.
+This project implements a lane detection system using computer vision techniques, specifically designed to process video frames and identify lane lines. It can detect lane changes and mark them on the real-time video feed.
 
 ## Features
 - **Lane Detection**: Uses edge detection (Canny) and Hough Line Transform to detect lanes.
@@ -51,6 +51,7 @@ This project implements a lane detection system using computer vision techniques
 ## Example Output
 
 When running the program, you will see the lane lines drawn on the video in red, with lane change notifications (either "Lane Change --->" or "<--- Lane Change") if a lane change is detected.
+See [Lane Changing](https://www.youtube.com/watch?v=9vDveLTsRgo), [Night Output](https://www.youtube.com/watch?v=V6N4vKbF1Lw)
 
 ## Additional Notes
 
