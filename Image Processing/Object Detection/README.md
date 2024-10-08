@@ -58,7 +58,7 @@ This project implements object detection using the Faster R-CNN architecture wit
 ## Example Output
 
 When running the `process_video` function with your input video, the output video (`output_video.mp4`) will display frames with detected cats or dogs, annotated with bounding boxes and labels.  
-See [Cat Detection](https://www.youtube.com/watch?v=m6ONQ4XXNaI), [Dog Detection](https://www.youtube.com/watch?v=YB1cFDFtem0)
+See [Cat Detection](https://www.youtube.com/watch?v=m6ONQ4XXNaI), [Dog Detection](https://www.youtube.com/watch?v=YB1cFDFtem0).
 
 ## Notes
 
