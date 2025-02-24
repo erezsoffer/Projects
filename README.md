@@ -4,7 +4,17 @@ This repository contains various projects demonstrating machine learning applica
 
 ## Projects Overview
 
-### 1. [Using LLMs for Software Engineering](https://github.com/erezsoffer/Projects/tree/main/Using%20LLMs)
+### 1. Cloud Computing and Software Engineering
+
+- [**Stock & Capital Gains Service (Dockerized)**:](https://github.com/erezsoffer/Projects/tree/main/Cloud%20Computing%20and%20Software%20Engineering/Stock%20%26%20Capital%20Gains%20Service%20(Dockerized))
+  - **Description**: A Dockerized multi-service finance application with persistent data storage, automatic recovery, and load balancing using NGINX.
+  
+- [**GitHub Actions CI-CD Pipeline for Finance App**:](https://github.com/erezsoffer/Projects/tree/main/Cloud%20Computing%20and%20Software%20Engineering/GitHub%20Actions%20CI-CD%20Pipeline%20for%20Finance%20App)
+  - **Description**: A CI/CD pipeline with automated Docker builds, testing using pytest, and query-based validation, triggered manually via GitHub Actions.
+
+---
+
+### 2. [Using LLMs for Software Engineering](https://github.com/erezsoffer/Projects/tree/main/Using%20LLMs)
 
 - **Description**: 
   An automated workflow that generates, executes, and iteratively refines Python code to query a CSV file based on user input. This project utilizes Azure OpenAI to develop and correct the code.
@@ -26,14 +36,14 @@ This repository contains various projects demonstrating machine learning applica
 
 ---
 
-### 2. [Reinforcement Learning: Solving a Variation of the SOKOBAN Environment](https://github.com/erezsoffer/Projects/tree/main/Reinforcement%20learning)
+### 3. [Reinforcement Learning: Solving a Variation of the SOKOBAN Environment](https://github.com/erezsoffer/Projects/tree/main/Reinforcement%20learning)
 
 - **Description**:
   This project focuses on solving a variation of the SOKOBAN environment using reinforcement learning techniques. The SOKOBAN puzzle involves moving boxes to designated storage locations within a warehouse, emphasizing strategy and optimal movement.
 
 ---
 
-### 3. Image Processing
+### 4. Image Processing
 
 - [**Lane Detection System**:](https://github.com/erezsoffer/Projects/tree/main/Image%20Processing/Lane%20Detection)
   - **Description**: A lane detection system that processes real-world dashcam video footage from a highway, utilizing image processing techniques to identify and mark lane boundaries.
@@ -43,7 +53,7 @@ This repository contains various projects demonstrating machine learning applica
 
 ---
 
-### 4. [From Nand to Tetris](https://github.com/erezsoffer/Projects/tree/main/nand2tetris)
+### 5. [From Nand to Tetris](https://github.com/erezsoffer/Projects/tree/main/nand2tetris)
 
 - **Description**: 
   A hands-on project where you build a computer from scratch. This project starts with basic logic gates and progresses to a fully functioning hardware and software system, culminating in a simple operating system and a high-level programming language.
