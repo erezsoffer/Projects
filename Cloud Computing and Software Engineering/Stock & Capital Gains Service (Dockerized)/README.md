@@ -4,8 +4,8 @@
 
 A multi-service finance application using Docker Compose, featuring:
 
-- Two instances of a stock service for tracking buy/sell operations.
-- A capital gains service to calculate profits using FIFO accounting.
+- Two instances of a stock service to manage a stock portfolio.
+- A capital gains service to provide information on the portfolio.
 - A MongoDB database for persistence.
 - An NGINX reverse proxy for request routing and load balancing.
 - Automatic recovery of services after failures.
