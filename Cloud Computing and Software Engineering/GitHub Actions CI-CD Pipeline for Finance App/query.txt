@@ -1,0 +1,7 @@
+stocks:shares=7
+stocks:symbol=AAPL
+stocks:purchase date=24-10-2024
+capital-gains:numsharesgt=10
+capital-gains:numshareslt=30
+stocks:purchase price=194.58
+stocks:name=Microsoft Corporation

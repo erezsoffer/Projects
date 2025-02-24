@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # MongoDB container
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # Single stocks container
+  stocks:
+    build:
+      context: ./stocks_service
+    container_name: stocks
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - API_KEY=${API_KEY}
+      - COLLECTION_NAME=stocks_collection
+      - FLASK_PORT=5001
+    ports:
+      - "5001:8000"
+    expose:
+      - "8000"
+    depends_on:
+      - mongo
+    restart: always
+
+  # Capital Gains container
+  capital-gains:
+    build:
+      context: ./capital_gains_service
+    container_name: capital-gains
+    environment:
+      - STOCKS_URL=http://stocks:8000/stocks
+      - API_KEY=${API_KEY}
+    ports:
+      - "5003:8080"
+    depends_on:
+      - stocks
+    restart: always
+
+volumes:
+  mongo-data:

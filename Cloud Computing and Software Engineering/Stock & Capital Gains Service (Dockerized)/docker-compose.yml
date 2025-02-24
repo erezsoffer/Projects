@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  # MongoDB container
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # stocks1-a container
+  stocks1-a:
+    build:
+      context: ./stocks_service
+    container_name: stocks1-a
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - API_KEY=${API_KEY}
+      - COLLECTION_NAME=stocks1_collection  # Set the collection name for stocks1
+      - FLASK_PORT=5001
+    ports:
+      - "5001:8000"
+    expose:
+      - "8000"  # Exposes 8000 to other services in the Docker network
+    depends_on:
+      - mongo
+    restart: always
+
+  # stocks1-b container
+  stocks1-b:
+    build:
+      context: ./stocks_service
+    container_name: stocks1-b
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - API_KEY=${API_KEY}
+      - COLLECTION_NAME=stocks1_collection  # Set the collection name for stocks1
+      - FLASK_PORT=5004
+    ports:
+      - "5004:8000"
+    expose:
+      - "8000"  # Exposes 8000 to other services in the Docker network
+    depends_on:
+      - mongo
+    restart: always
+
+  # stocks2 container
+  stocks2:
+    build:
+      context: ./stocks_service
+    container_name: stocks2
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - API_KEY=${API_KEY}
+      - COLLECTION_NAME=stocks2_collection  # Set the collection name for stocks2
+      - FLASK_PORT=5002
+    ports:
+      - "5002:8000"
+    expose:
+      - "8000"  # Exposes 8000 to other services in the Docker network
+    depends_on:
+      - mongo
+    restart: always
+
+  # Capital Gains container
+  capital-gains:
+    build:
+      context: ./capital_gains_service
+    container_name: capital-gains
+    environment:
+      - STOCKS1_URL=http://stocks1-a:8000/stocks
+      - STOCKS2_URL=http://stocks2:8000/stocks
+      - API_KEY=${API_KEY}
+    ports:
+      - "5003:8080"
+    depends_on:
+      - stocks1-a
+      - stocks2
+    restart: always
+
+  # NGINX container
+  nginx:
+    build:
+      context: ./  # Assuming nginx.conf is in the same directory
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - stocks1-a
+      - stocks1-b
+      - stocks2
+    restart: always
+
+volumes:
+  mongo-data:
